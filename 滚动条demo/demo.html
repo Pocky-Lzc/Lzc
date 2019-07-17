@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <meta name="viewport" content="width=device-width" />
+    <title>啦啦啦</title>
+    <script src="https://code.jquery.com/jquery-1.8.3.min.js"></script>
+    <style type="text/css">
+        * {
+            padding: 0px;
+            margin: 0px auto
+        }
+
+        body,
+        html {
+            margin: 0px;
+            height: 100%;
+
+        }
+
+        .first_div {
+            width: 40%;
+            /* height: 100%; */
+            min-height: 100%;
+            background-color: #cccaca;
+            margin: 0px auto;
+            position: relative;
+        }
+
+        ul {
+            width: 100%;
+            /* height: 400px; */
+            min-height: 100%;
+        }
+
+        li {
+            list-style-type: none;
+            height: 20rem;
+            border: 1px solid #e6ef95;
+            border-radius: 10rem;
+            background: skyblue;
+        }
+
+        .two_div {
+            position: absolute;
+            top: 0%;
+            left: 100%;
+            width: 316px;
+            height: 660px;
+            background-color: red;
+        }
+        .screenfixed{position: fixed !important;top: 0px !important;right:-57% !important;width: 17% !important;left: 0px !important;}
+        /* background:url("1.png") no-repeat;background-size:100% 100%; */
+        .baidu{height: 200px;width: 40%;margin-top:100px;}
+        .baidu_hidden{height: 60px;width: 40%;position: fixed;top: 20px;left: 40%;;z-index: 100;background: rgba(255,255,255,0.96);
+            box-shadow:0px 5px 5px -5px #000 ;border-radius: 3px
+                       }
+        .div_hidden{opacity: 0 !important}
+        input{width:400px;height: 40px;}
+                      
+    </style>
+</head>
+
+<body>
+    <!-- 中间的搜索框 -->
+    <div class="baidu">
+        <img src="1.png" class="P1" />
+        <img src="2.png" />
+    </div>
+    <!-- 上面的搜索框 -->
+    <div class="div_hidden baidu_hidden">
+        <!-- <input> -->
+        <!-- <img src="3.png" /> -->
+    </div>
+    <!-- 中间的内容 -->
+    <div class="first_div">
+        <!-- 内容 -->
+        <ul>
+            <li>
+                三大模块萨达姆萨克的撒撒娇低价覅东方的屡屡从，铝产量，v参保率离开现场v现场v美宣称
+                三大模块萨达姆萨克的撒撒娇低价覅东方的屡屡从，铝产量，v参保率离开现场v现场v美宣称
+                三大模块萨达姆萨克的撒撒娇低价覅东方的屡屡从，铝产量，v参保率离开现场v现场v美宣称
+                三大模块萨达姆萨克的撒撒娇低价覅东方的屡屡从，铝产量，v参保率离开现场v现场v美宣称
+                三大模块萨达姆萨克的撒撒娇低价覅东方的屡屡从，铝产量，v参保率离开现场v现场v美宣称
+                三大模块萨达姆萨克的撒撒娇低价覅东方的屡屡从，铝产量，v参保率离开现场v现场v美宣称
+                三大模块萨达姆萨克的撒撒娇低价覅东方的屡屡从，铝产量，v参保率离开现场v现场v美宣称s
+            </li>
+            <li></li>
+            <li></li>
+            <li></li>
+            <li></li>
+            <li></li>
+            <li></li>
+            <li></li>
+        </ul>
+        <!-- 侧边栏 -->
+        <div class="two_div"></div>
+    </div>
+    <script type="text/javascript">
+        //鼠标滚动后，菜单栏滚到顶部固定
+        //页面刷新时加载
+        $(document).ready(function () {
+            var navOffset = $(".two_div").offset().top;//先得到据顶部的距离
+            //页面滚动时触发
+            $(window).scroll(function () {
+
+                var scrollPos = $(window).scrollTop();//得到滚动的距离
+                //滚动的距离大于204时中间的搜索框隐藏，上面的搜索框显示，这个204只是我放的图片的距离，具体数值以你中间搜索框高度为准
+                if (scrollPos > 204) {
+                    $(".baidu").addClass("div_hidden");
+                    $(".baidu_hidden").removeClass("div_hidden");
+                }
+                else {
+                    $(".baidu").removeClass("div_hidden");
+                    $(".baidu_hidden").addClass("div_hidden");
+                }
+                //滚动的距离大于侧边栏距离顶部的高度时，侧边栏固定
+                if (scrollPos > navOffset) {       //比较判断是否fixed
+
+                    $(".two_div").addClass("screenfixed");
+
+                } else {
+
+                    $(".two_div").removeClass("screenfixed");
+
+                }
+
+            })
+
+        })
+    </script>
+</body>
+
+</html>

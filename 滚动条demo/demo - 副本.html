@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <meta name="viewport" content="width=device-width" />
+    <title>啦啦啦</title>
+    <script src="https://code.jquery.com/jquery-1.8.3.min.js"></script>
+    <script src="jquery.easyui.min.js"></script>
+
+</head>
+
+<body>
+    <script>
+        var aTree = [
+            { "id": "1", "name": "动物", "pid": "0" },
+            { "id": "2", "name": "鸟类", "pid": "5" },
+            { "id": "3", "name": "无脊椎动物", "pid": "1" },
+            { "id": "4", "name": "哺乳动物", "pid": "5" },
+            { "id": "5", "name": "脊椎动物", "pid": "1" },
+            { "id": "6", "name": "喜鹊", "pid": "2" },
+            { "id": "7", "name": "蚯蚓", "pid": "3" }
+        ]
+
+        function getParent(id, aTree) {
+            var aParent = [];
+            for (var i in aTree) {
+                if (aTree[i].pid == id) {
+                    aParent.push(aTree[i]);
+                }
+            }
+            return aParent;
+        }
+        var menu = '';
+        function makeTree(id, aTree) {
+            var topMenu = getParent(id, aTree);
+            if (topMenu.length > 0) {
+                for (var i in topMenu) {
+                    menu += '<a href="#">' + topMenu[i].name + '</a>';
+                    menu += '<ul>' // 为了区分层次，我们给每一个子级都包上一层ul
+                    makeTree(topMenu[i].id, aTree);
+                    menu += '</ul>'
+                }
+            }
+        }
+        makeTree(0, aTree);
+        $('body').append(menu);
+    </script>
+</body>
+
+</html>
